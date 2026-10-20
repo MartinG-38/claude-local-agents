@@ -1,0 +1,43 @@
+name: Bug report
+description: Something does not work as documented
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Security problem? Please report it privately instead (see SECURITY.md).
+        Before posting, remove anything private from logs (paths, code, data).
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what you expected
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to reproduce
+      description: The command or /local request, the options, and the smallest project that shows it.
+    validations:
+      required: true
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Output of /local doctor
+      description: Or `python3 ~/.claude/skills/local/scripts/doctor.py`.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: report
+    attributes:
+      label: Task report, if any
+      description: The relevant part of `.git/local-agents/<id>.report.txt`.
+      render: text
+  - type: input
+    id: system
+    attributes:
+      label: System
+      placeholder: e.g. macOS 26 on Apple Silicon, Ubuntu 24.04, Windows 11 + WSL2
+    validations:
+      required: true

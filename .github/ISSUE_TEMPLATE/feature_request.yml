@@ -1,0 +1,15 @@
+name: Feature request or result
+description: An idea, or how the skill does with your models and machine
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: The idea or the result
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it matters
+      description: The task or situation where it would help (or where the skill fell short).

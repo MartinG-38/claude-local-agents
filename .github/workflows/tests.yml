@@ -1,0 +1,47 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  tests:
+    name: ${{ matrix.os }} · Python ${{ matrix.python }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ["3.8", "3.13"]
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install Python ${{ matrix.python }}
+        uses: astral-sh/setup-uv@v7
+
+      - run: uv python install ${{ matrix.python }}
+
+      - name: Install bubblewrap (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q bubblewrap
+          # Recent Ubuntu restricts unprivileged user namespaces, which bubblewrap needs.
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0 || true
+
+      - name: Sandbox self-test (bubblewrap on Linux, sandbox-exec on macOS)
+        run: >
+          uv run --no-project --python ${{ matrix.python }} python -c
+          "import sys; sys.path.insert(0, 'local/scripts'); import common;
+          ok, detail = common.sandbox_selftest(); print(common.sandbox_kind(), '->', detail);
+          sys.exit(0 if ok else 1)"
+
+      - name: Static check (syntax for this Python version)
+        run: uv run --no-project --python ${{ matrix.python }} python -m compileall -q local install.py tests
+
+      - name: Test suite
+        run: uv run --no-project --python ${{ matrix.python }} python tests/run_tests.py
+
+      - name: Tool tests (profile_data.py, make_notebook.py)
+        run: uv run --no-project --python ${{ matrix.python }} python tests/test_tools.py
