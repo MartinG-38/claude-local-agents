@@ -162,12 +162,15 @@ Then register them, in Claude Code:
 ```
 /local models             lists the models installed in Ollama (tool calling, context, fits in memory)
                           and offers to add those not yet in models.md: you pick, it adds them
-/local calibrate --quick  optional: a short test of each model, to know which one to trust for what
+/local calibrate          recommended: tests each model on 6 code tasks and 8 reading questions
+                          (15–40 min per model, in the background) and suggests its task size
+/local calibrate --quick  the short version: 2 code tasks and the reading questions
 ```
 
 The skill only uses the models listed in `models.md`: run `/local models` again after each
-`ollama pull`. Any local model with tool calling works; see
-[Choosing models](docs/configuration.md#choosing-models).
+`ollama pull`. Calibration is optional but recommended: from the first task, the skill knows which
+model to trust for what, instead of learning it from failures. Any local model with tool calling
+works; see [Choosing models](docs/configuration.md#choosing-models).
 
 **5. Check the installation**
 
