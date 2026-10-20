@@ -9,7 +9,7 @@
 |---|---|
 | `/local <task>` | delegates this task to the local models (Claude picks the tool and the models) |
 | `/local plan <goal>` | plan mode: design, plan of attack for your approval, execution task by task, wrap-up |
-| `/local --force-model <m1,m2> <task>` | this prompt only (nothing is saved) uses exactly these models, in this order: no reordering by record, no fallback, none skipped. Exact names or a part of exactly one installed name (`27b,glm`), separated by commas (not `-`: model names contain it). Without it, Claude and the scripts choose from what was learned |
+| `/local --force-model <m1,m2> <task>` | this prompt only (nothing is saved) uses exactly these models, in this order: no reordering by record, no fallback, none skipped. Exact names or a part of exactly one installed name (`20b,gemma`), separated by commas (not `-`: model names contain it). Without it, Claude and the scripts choose from what was learned |
 | `/local doctor` | full diagnostics: Claude Code, Ollama, sandbox self-test, context, each model's capabilities, memory, cloud block |
 | `/local models` | screens the models installed in Ollama and adds the ones you pick to `models.md` |
 | `/local calibrate [--quick] [--force] [--only=5,6] [model]` | measures the models: speed, code tasks (2 with `--quick`, else 6: skeleton, bug, tests, docstrings, a module from tests of real size, continuing someone else's partial work without rewriting it) with how the model worked (tiny edits, looked into .venv, going in circles, step limit), 8 reading questions, Claude Code's fixed cost, a suggested task size; models already calibrated and unchanged are skipped unless `--force`. The models keep their lessons during calibration, but nothing is learned from it: what was learned from real tasks is left as it is |
@@ -61,7 +61,7 @@ save?"). Each command runs one of the scripts below, which you can also run your
 | `delegate_local.py "question" --readonly` | read-only code exploration, answer with `file:line`, each citation checked against the files (Claude rereads only the doubtful ones); same options as the agent (`--model`, `--think`, `--timeout`, `--max-turns`) |
 | `worktree.py list` · `merge <id>` · `discard <id>` | parallel tasks: list, merge into the current branch, drop (kept on a `local-agents/rejected/…` branch) |
 | `models.py` · `models.py add <m> [...] [--default <m>]` | screen the installed models · add them to `models.md` |
-| `models.py resolve "27b,glm"` | exact names of the installed models a user named (what `/local --force-model` runs) |
+| `models.py resolve "20b,gemma"` | exact names of the installed models a user named (what `/local --force-model` runs) |
 | `models.py size [<size>] [--force \| --no-force]` | task size (what `/local size` runs) |
 | `doctor.py` · `--quick` · `--capacity` · `--suggest` | diagnostics · one-line check at session start · memory and what fits · models to install for this machine |
 | `calibrate.py [--quick] [--force] [--only=5,6] [model ...]` | calibration (results in the data folder, `results.md`) |

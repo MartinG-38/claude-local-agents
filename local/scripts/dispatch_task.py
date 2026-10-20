@@ -13,7 +13,7 @@ Usage: dispatch_task.py <id> "instruction" [options]          (instruction "-" =
                     is not tried: the task must be split.
   --force-models "a,b"
                     exactly these models, in this order, as the user asked (/local --force-model): no
-                    reordering by record, no fallback, none skipped. Short names work ("27b,glm": a part
+                    reordering by record, no fallback, none skipped. Short names work ("20b,gemma": a part
                     of exactly one installed name)
   --check "cmd"     check command (tests, linter), run in a sandbox                LOCAL_CHECK_CMD
   --check-writable  let the checked code write in the project (by default the project is read-only

@@ -1985,7 +1985,7 @@ def suggest(name, inst=None):
 
 
 def resolve_models(spec, inst=None):
-    """The models a user named ("27b,glm" or exact names), in their order. Each name is an installed
+    """The models a user named ("20b,gemma" or exact names), in their order. Each name is an installed
     local model's exact name (":latest" optional) or a part of exactly one installed name. Commas or
     spaces separate them, never "-" (model names contain it). Raises ModelError."""
     inst = installed() if inst is None else inst

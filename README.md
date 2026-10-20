@@ -150,15 +150,23 @@ python3 install.py --ollama-settings --claude-md          # add --block-cloud to
   if you blocked the cloud) and keep "Expose Ollama to the network" off.
 - Quit Ollama (menu bar or taskbar icon → Quit) and reopen it, so that it uses the settings.
 
-**4. Choose and download your models**
+**4. Choose, download and register your models**
 
 ```bash
 python3 ~/.claude/skills/local/scripts/doctor.py --suggest   # proposals for this machine's memory
 ollama pull <model>                                          # never a tag ending in -cloud
 ```
 
-Then, in Claude Code, `/local models` lists the installed models with what each can do and adds the
-ones you pick to `models.md`. Any local model with tool calling works; see
+Then register them, in Claude Code:
+
+```
+/local models             lists the models installed in Ollama (tool calling, context, fits in memory)
+                          and offers to add those not yet in models.md: you pick, it adds them
+/local calibrate --quick  optional: a short test of each model, to know which one to trust for what
+```
+
+The skill only uses the models listed in `models.md`: run `/local models` again after each
+`ollama pull`. Any local model with tool calling works; see
 [Choosing models](docs/configuration.md#choosing-models).
 
 **5. Check the installation**
@@ -223,7 +231,7 @@ The most useful commands:
 | `/local models` | screens the models installed in Ollama and adds the ones you pick |
 | `/local calibrate [--quick]` | measures your models and suggests a task size for each |
 | `/local plan <goal>` | plan mode: design, plan for your approval, execution, wrap-up |
-| `/local --force-model 27b,glm <task>` | uses exactly these models, in this order, for this prompt only: nothing is saved (short names work; commas between them). Without it, the models are chosen from what was learned on your previous tasks |
+| `/local --force-model 20b,gemma <task>` | uses exactly these models, in this order, for this prompt only: nothing is saved (short names work; commas between them). Without it, the models are chosen from what was learned on your previous tasks |
 | `/local size [<size>]` | shows or sets how big a delegated task may be |
 | `/local settings` | Ollama settings (context, keep-alive, optional cloud block) |
 | `/local unload` | frees the memory held by loaded models |

@@ -6,7 +6,7 @@ Usage:
                                   fits in memory, already listed); in a terminal, asks which to add
   models.py add <model> [...] [--default <model>]
                                   adds these models to ~/.claude/local-agents/models.md (one block each)
-  models.py resolve "27b,glm"     exact names of the installed models the user named (/local --force-model):
+  models.py resolve "20b,gemma"   exact names of the installed models the user named (/local --force-model):
                                   exact names, or a part of exactly one installed name; commas or spaces
   models.py size                  shows the task size in force (/local size)
   models.py size <size>           sets it: tiny, small, medium, large or xlarge (or a percentage, e.g. 35%);
