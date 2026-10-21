@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#161b26"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8b949e"/>
+    </marker>
+    <marker id="arrow-warm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#d29922"/>
+    </marker>
+    <style>
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .title { font-size: 68px; font-weight: 700; fill: #f0f6fc; }
+      .tagline { font-size: 32px; fill: #c9d1d9; }
+      .accent { fill: #3fb950; font-weight: 700; }
+      .box-label { font-size: 30px; font-weight: 600; fill: #f0f6fc; }
+      .box-sub { font-size: 22px; fill: #9da7b3; }
+      .edge { font-size: 22px; fill: #9da7b3; }
+      .loop { font-size: 24px; fill: #d29922; }
+      .footer { font-size: 24px; fill: #9da7b3; letter-spacing: 1px; }
+    </style>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+
+  <!-- Title -->
+  <text x="640" y="125" text-anchor="middle" class="title mono">claude-local-agents</text>
+  <text x="640" y="185" text-anchor="middle" class="tagline"><tspan class="accent">Save Claude tokens:</tspan> let local models do the heavy lifting</text>
+
+  <!-- Flow -->
+  <g transform="translate(0, 250)">
+    <!-- Claude Code -->
+    <rect x="90" y="0" width="280" height="140" rx="16" fill="#1c2230" stroke="#d2a8ff" stroke-width="2.5"/>
+    <text x="230" y="62" text-anchor="middle" class="box-label">Claude Code</text>
+    <text x="230" y="98" text-anchor="middle" class="box-sub">plans · reviews</text>
+
+    <!-- Local model -->
+    <rect x="480" y="0" width="320" height="140" rx="16" fill="#1c2230" stroke="#58a6ff" stroke-width="2.5"/>
+    <text x="640" y="50" text-anchor="middle" class="box-label">Local model</text>
+    <text x="640" y="86" text-anchor="middle" class="box-sub">reads &amp; writes code</text>
+    <text x="640" y="116" text-anchor="middle" class="box-sub">Ollama · sandboxed</text>
+
+    <!-- Checks -->
+    <rect x="910" y="0" width="280" height="140" rx="16" fill="#1c2230" stroke="#3fb950" stroke-width="2.5"/>
+    <text x="1050" y="62" text-anchor="middle" class="box-label">✓ Auto checks</text>
+    <text x="1050" y="98" text-anchor="middle" class="box-sub">tests</text>
+
+    <!-- Arrows -->
+    <line x1="372" y1="70" x2="476" y2="70" stroke="#8b949e" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="424" y="56" text-anchor="middle" class="edge">task</text>
+    <line x1="802" y1="70" x2="906" y2="70" stroke="#8b949e" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="854" y="56" text-anchor="middle" class="edge">code</text>
+
+    <!-- Return loop -->
+    <path d="M1050 142 V205 H230 V146" fill="none" stroke="#d29922" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#arrow-warm)"/>
+    <text x="640" y="244" text-anchor="middle" class="loop">✓ short summary to Claude  ·  ✗ retry, then escalate</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="640" y="590" text-anchor="middle" class="footer">runs on your machine  ·  any Ollama model  ·  never the cloud</text>
+</svg>
