@@ -1,6 +1,7 @@
 # Contributing
 
 Thanks for your interest! Bug reports, results on your machine and pull requests are all welcome.
+Everyone taking part is expected to follow the [code of conduct](CODE_OF_CONDUCT.md).
 
 ## Reporting a bug or a result
 

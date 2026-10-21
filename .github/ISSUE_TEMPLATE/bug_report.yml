@@ -35,6 +35,11 @@ body:
       description: The relevant part of `.git/local-agents/<id>.report.txt`.
       render: text
   - type: input
+    id: models
+    attributes:
+      label: Model(s) used
+      placeholder: e.g. qwen3.8:27b (the names shown by `ollama list`)
+  - type: input
     id: system
     attributes:
       label: System
